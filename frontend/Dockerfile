@@ -24,4 +24,6 @@ COPY --from=builder /app/public ./public
 EXPOSE 3089
 
 ENV PORT=3089
+ENV HOSTNAME=0.0.0.0
+
 CMD ["node", "server.js"]
