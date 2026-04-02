@@ -1,0 +1,39 @@
+name: XONA
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on:
+      - self-hosted
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+        
+      - name: 'Create env file from GitHub Secrets'
+        run: echo "${{ secrets.ENV_PRODUCTION }}" > .env
+        
+      - name: 'Stop containers and remove them'
+        if: always()
+        run: docker compose -p orbitx402 -f "docker-compose.yml" down --rmi 'all' --remove-orphans
+
+      # - name: 'Clean docker cache'
+      #   run: docker builder prune --force
+
+      - name: 'Build and run containers'
+        env:
+          DOCKER_BUILDKIT: 1
+          COMPOSE_DOCKER_CLI_BUILD: 1
+        run: docker compose -p orbitx402 -f "docker-compose.yml" up --build -d --remove-orphans
+
+      - name: 'Clean env builder'
+        run: rm .env
+
+      - name: 'Dump docker logs on failure'
+        if: failure()
+        uses: jwalton/gh-docker-logs@v1

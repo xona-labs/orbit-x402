@@ -2,22 +2,22 @@ services:
   backend:
     build: ./backend
     ports:
-      - "3088:3088"
+      - "${PORT:-3088}:${PORT:-3088}"
     volumes:
       - backend-data:/app/data
     env_file:
       - .env
-    environment:
-      - PORT=3088
     restart: unless-stopped
 
   frontend:
     build:
       context: ./frontend
       args:
-        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:3088}
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://api.orbitx402.com}
     ports:
       - "3089:3089"
+    env_file:
+      - .env
     depends_on:
       - backend
     restart: unless-stopped
