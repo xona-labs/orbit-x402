@@ -13,18 +13,18 @@
         {
           "address": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4",
           "dateOfFirstTransaction": "2025-07-01",
-          "lastSyncedAt": "2026-04-02T10:10:02.129Z",
-          "lastSignature": "46Sw3kvMxGyYqSUo8RLu9M9d74S6z7LcxvKxGMA74aWWLWR8W2GwQn1awgio27V9XejoQXyuwYhXJ1xkEmYzXkyo"
+          "lastSyncedAt": "2026-04-02T10:25:02.913Z",
+          "lastSignature": "NCV9gKMPbycnGWEzXL3RYhhm4uj5YtxZCWZ7hCiJGPPev3znUBshqxLZ7vKh5VgHfYkUvAeviwsCSjXEUyiGK2V"
         },
         {
           "address": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "dateOfFirstTransaction": "2025-12-08",
-          "lastSyncedAt": "2026-04-02T10:20:16.460Z"
+          "lastSyncedAt": "2026-04-02T10:25:03.133Z"
         },
         {
           "address": "8B5UKhwfAyFW67h58cBkQj1Ur6QXRgwWJJcQp8ZBsDPa",
           "dateOfFirstTransaction": "2025-12-08",
-          "lastSyncedAt": "2026-04-02T10:20:19.672Z"
+          "lastSyncedAt": "2026-04-02T10:25:03.340Z"
         }
       ],
       "token": {
@@ -33,10 +33,10 @@
         "decimals": 6
       },
       "stats": {
-        "totalTransactions": 245,
-        "totalVolume": 244.51,
+        "totalTransactions": 247,
+        "totalVolume": 244.54,
         "uniqueCounterparties": 21,
-        "lastActivityAt": "2026-04-02T09:47:49.000Z"
+        "lastActivityAt": "2026-04-02T10:17:04.000Z"
       }
     },
     {
@@ -52,8 +52,8 @@
         {
           "address": "DEXVS3su4dZQWTvvPnLDJLRK1CeeKG6K3QqdzthgAkNV",
           "dateOfFirstTransaction": "2025-10-26",
-          "lastSyncedAt": "2026-04-02T10:21:57.456Z",
-          "lastSignature": "2TuKFpYgtM3AhKSD6zEzDi8uu9jcCwexDYRGr6PvxSNt634Vi5bUocnQx4Y4UbG6U1TZrTn2QH3XU1gHAGZgTWV"
+          "lastSyncedAt": "2026-04-02T10:25:09.216Z",
+          "lastSignature": "2AbVGCJM21MtV3grip5TvJf6P8gd3jKmorHGDch3fynu5dH6xUis8cMgoJPANhjQX1gaw4MDejWsHbEcC1gz9HTy"
         }
       ],
       "token": {
@@ -62,10 +62,10 @@
         "decimals": 6
       },
       "stats": {
-        "totalTransactions": 2178,
-        "totalVolume": 78.83,
+        "totalTransactions": 2212,
+        "totalVolume": 79.96,
         "uniqueCounterparties": 73,
-        "lastActivityAt": "2026-04-02T10:19:57.000Z"
+        "lastActivityAt": "2026-04-02T10:24:42.000Z"
       }
     },
     {
@@ -81,7 +81,7 @@
         {
           "address": "4x4ZhcqiT1FnirM8Ne97iVupkN4NcQgc2YYbE2jDZbZn",
           "dateOfFirstTransaction": "2026-01-23",
-          "lastSyncedAt": "2026-04-02T10:21:58.451Z",
+          "lastSyncedAt": "2026-04-02T10:25:10.177Z",
           "lastSignature": "5cTqLwSU5RzcnKGo3MHfKVdDVy5L3icR2K3Cx8zAiDgGtsbPrnHUjMJbLjqu4VWSaqfU5WF3dQ82J7H2BbMLTKZ3"
         }
       ],

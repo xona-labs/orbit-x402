@@ -12,7 +12,7 @@ Discover x402-enabled servers and paid API resources across the Solana network. 
 ## Base URL
 
 ```
-https://your-orbitx402-instance.com
+https://api.orbitx402.com
 ```
 
 ## Actions

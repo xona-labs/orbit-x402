@@ -36,7 +36,7 @@ Agent calls the x402 endpoint with USDC payment
 
 ```bash
 # Clone
-git clone https://github.com/user/orbitx402.git
+git clone https://github.com/xona-labs/orbit-x402.git
 cd orbitx402
 
 # Configure
@@ -69,7 +69,7 @@ Add OrbitX402 discovery to any agent in one step:
 
 ```bash
 # Fetch the skill instructions
-curl https://your-orbitx402.com/skill.md
+curl https://api.orbitx402.com/skill.md
 ```
 
 Add the content to your agent's system prompt. The agent can now:

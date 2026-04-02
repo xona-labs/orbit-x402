@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-const API_BASE = 'https://your-orbitx402.com';
+const API_BASE = 'https://api.orbitx402.com';
 
 const sections = [
   {
