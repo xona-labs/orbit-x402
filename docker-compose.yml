@@ -16,8 +16,9 @@ services:
         NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://api.orbitx402.com}
     ports:
       - "3089:3089"
-    env_file:
-      - .env
+    environment:
+      - PORT=3089
+      - HOSTNAME=0.0.0.0
     depends_on:
       - backend
     restart: unless-stopped
