@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "orbitx402-backend",
+      "runtimeExecutable": "/Users/ibam/.nvm/versions/node/v24.7.0/bin/node",
+      "runtimeArgs": ["server.js"],
+      "port": 3088,
+      "cwd": "/Applications/MAMP/htdocs/orbitx402/backend"
+    },
+    {
+      "name": "orbitx402-frontend",
+      "runtimeExecutable": "/Users/ibam/.nvm/versions/node/v24.7.0/bin/npx",
+      "runtimeArgs": ["next", "dev", "-p", "3089"],
+      "port": 3089,
+      "cwd": "/Applications/MAMP/htdocs/orbitx402/frontend"
+    }
+  ]
+}

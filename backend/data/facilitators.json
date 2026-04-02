@@ -1,0 +1,101 @@
+{
+  "facilitators": [
+    {
+      "id": "payai",
+      "name": "PayAI",
+      "url": "https://facilitator.payai.network",
+      "discoveryUrl": "https://facilitator.payai.network",
+      "docsUrl": "https://docs.payai.network",
+      "color": "#9F3EC9",
+      "image": "https://x402scan.com/facilitators/payai.png",
+      "network": "solana",
+      "addresses": [
+        {
+          "address": "2wKupLR9q6wXYppw8Gr2NvWxKBUqm4PPJKkQfoxHDBg4",
+          "dateOfFirstTransaction": "2025-07-01",
+          "lastSyncedAt": "2026-04-02T10:10:02.129Z",
+          "lastSignature": "46Sw3kvMxGyYqSUo8RLu9M9d74S6z7LcxvKxGMA74aWWLWR8W2GwQn1awgio27V9XejoQXyuwYhXJ1xkEmYzXkyo"
+        },
+        {
+          "address": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "dateOfFirstTransaction": "2025-12-08",
+          "lastSyncedAt": "2026-04-02T10:20:16.460Z"
+        },
+        {
+          "address": "8B5UKhwfAyFW67h58cBkQj1Ur6QXRgwWJJcQp8ZBsDPa",
+          "dateOfFirstTransaction": "2025-12-08",
+          "lastSyncedAt": "2026-04-02T10:20:19.672Z"
+        }
+      ],
+      "token": {
+        "symbol": "USDC",
+        "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "decimals": 6
+      },
+      "stats": {
+        "totalTransactions": 245,
+        "totalVolume": 244.51,
+        "uniqueCounterparties": 21,
+        "lastActivityAt": "2026-04-02T09:47:49.000Z"
+      }
+    },
+    {
+      "id": "dexter",
+      "name": "Dexter",
+      "url": "https://facilitator.dexter.cash",
+      "discoveryUrl": "https://x402.dexter.cash",
+      "docsUrl": "https://docs.dexter.cash",
+      "color": "#DD903A",
+      "image": "https://x402scan.com/facilitators/dexter.png",
+      "network": "solana",
+      "addresses": [
+        {
+          "address": "DEXVS3su4dZQWTvvPnLDJLRK1CeeKG6K3QqdzthgAkNV",
+          "dateOfFirstTransaction": "2025-10-26",
+          "lastSyncedAt": "2026-04-02T10:10:20.990Z",
+          "lastSignature": "2pKzQtgpK7wEWZxFeBooDDh7mZeTefs67eanAQCEQm3Jpr3QStXU7Z1Sijb2JEBpeQyMuxQkJeCrNh7NPqBotVgh"
+        }
+      ],
+      "token": {
+        "symbol": "USDC",
+        "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "decimals": 6
+      },
+      "stats": {
+        "totalTransactions": 2111,
+        "totalVolume": 76.71,
+        "uniqueCounterparties": 72,
+        "lastActivityAt": "2026-04-02T10:09:46.000Z"
+      }
+    },
+    {
+      "id": "relai",
+      "name": "Relai",
+      "url": "https://facilitator.x402.fi",
+      "discoveryUrl": "https://facilitator.x402.fi",
+      "docsUrl": "https://docs.relai.fi",
+      "color": "#8B5CF6",
+      "image": "https://x402scan.com/facilitators/relai.png",
+      "network": "solana",
+      "addresses": [
+        {
+          "address": "4x4ZhcqiT1FnirM8Ne97iVupkN4NcQgc2YYbE2jDZbZn",
+          "dateOfFirstTransaction": "2026-01-23",
+          "lastSyncedAt": "2026-04-02T10:10:21.946Z",
+          "lastSignature": "5cTqLwSU5RzcnKGo3MHfKVdDVy5L3icR2K3Cx8zAiDgGtsbPrnHUjMJbLjqu4VWSaqfU5WF3dQ82J7H2BbMLTKZ3"
+        }
+      ],
+      "token": {
+        "symbol": "USDC",
+        "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "decimals": 6
+      },
+      "stats": {
+        "totalTransactions": 13,
+        "totalVolume": 21,
+        "uniqueCounterparties": 3,
+        "lastActivityAt": "2026-04-02T06:54:48.000Z"
+      }
+    }
+  ]
+}

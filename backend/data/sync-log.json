@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-04-02T10:17:46.999Z",
+  "duration": 714,
+  "totals": {
+    "facilitators": 3,
+    "transfers": 2369,
+    "servers": 63,
+    "resources": 1100
+  },
+  "results": {
+    "transfers": null,
+    "servers": {
+      "synced": 67
+    },
+    "resources": {
+      "probed": 63,
+      "endpoints": 1110
+    },
+    "duration": 714
+  }
+}

@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3088:3088"
+    volumes:
+      - backend-data:/app/data
+    env_file:
+      - .env
+    environment:
+      - PORT=3088
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:3088}
+    ports:
+      - "3089:3089"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  backend-data:
