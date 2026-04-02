@@ -106,42 +106,59 @@ class DiscoveryService {
     const { withPricing = true } = opts;
     const resources = [];
 
+    console.log(`[Discovery] Probing discovery doc for ${serverUrl}`);
+
     for (const discoveryPath of DISCOVERY_PATHS) {
+      const url = `${serverUrl.replace(/\/$/, '')}${discoveryPath}`;
       try {
-        const url = `${serverUrl.replace(/\/$/, '')}${discoveryPath}`;
+        console.log(`[Discovery]   Trying: ${url}`);
         const resp = await axios.get(url, { timeout: 10000, validateStatus: s => s < 500 });
+        console.log(`[Discovery]   → Status: ${resp.status}, Type: ${typeof resp.data}, IsArray: ${Array.isArray(resp.data)}`);
 
         if (resp.status === 200 && resp.data) {
           const parsed = this._parseDiscoveryDoc(resp.data, serverUrl);
+          console.log(`[Discovery]   → Parsed ${parsed.length} endpoints`);
           if (parsed.length > 0) {
             resources.push(...parsed);
             break;
           }
         }
       } catch (err) {
-        // Try next path
+        console.log(`[Discovery]   → Error: ${err.message}`);
       }
     }
 
-    // Probe each endpoint for 402 pricing + description
-    if (withPricing && resources.length > 0) {
-      console.log(`[Discovery] Probing ${resources.length} endpoints on ${serverUrl} for pricing...`);
+    if (resources.length === 0) {
+      console.log(`[Discovery] No discovery doc found for ${serverUrl}`);
+      return resources;
+    }
 
-      for (const ep of resources) {
+    // Probe each endpoint for 402 pricing + description
+    if (withPricing) {
+      console.log(`[Discovery] Probing ${resources.length} endpoints on ${serverUrl} for 402 pricing...`);
+
+      for (let i = 0; i < resources.length; i++) {
+        const ep = resources[i];
         try {
+          console.log(`[Discovery]   [${i + 1}/${resources.length}] ${ep.method} ${ep.endpoint}`);
           const pricing = await this.probeEndpointPricing(ep.endpoint, ep.method);
-          if (pricing) {
+          if (pricing && pricing.accepts.length > 0) {
             ep.pricing = pricing.accepts;
             ep.description = ep.description || pricing.description || '';
             ep.inputSchema = ep.inputSchema || pricing.inputSchema || null;
+            const price = pricing.accepts[0];
+            console.log(`[Discovery]     → 402 OK: "${ep.description}" $${price.amountUsdc} USDC`);
+          } else {
+            console.log(`[Discovery]     → No 402 pricing returned`);
           }
         } catch (err) {
-          // Skip failing endpoint
+          console.log(`[Discovery]     → Error: ${err.message}`);
         }
         await this._sleep(150);
       }
     }
 
+    console.log(`[Discovery] Probe complete for ${serverUrl}: ${resources.length} endpoints`);
     return resources;
   }
 
@@ -228,11 +245,16 @@ class DiscoveryService {
         : await axios.post(endpoint, {}, config);
 
       if (resp.status === 402) {
+        const hasHeader = !!resp.headers['payment-required'];
+        const hasBody = !!(resp.data?.accepts);
+        console.log(`[Discovery]     → HTTP 402, Payment-Required header: ${hasHeader}, body.accepts: ${hasBody}`);
         const pricing = this._parse402Response(resp);
         return pricing;
+      } else {
+        console.log(`[Discovery]     → HTTP ${resp.status} (not 402)`);
       }
     } catch (err) {
-      // Endpoint unavailable
+      console.log(`[Discovery]     → Request failed: ${err.message}`);
     }
     return null;
   }

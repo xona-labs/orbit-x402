@@ -15,14 +15,14 @@
  */
 
 const fs = require('fs');
-const dotenvPath = fs.existsSync(require('path').join(__dirname, '..', '.env'))
-  ? require('path').join(__dirname, '..', '.env')
-  : require('path').join(__dirname, '..', '..', '.env');
+const path = require('path');
+
+const dotenvPath = fs.existsSync(path.join(__dirname, '..', '.env'))
+  ? path.join(__dirname, '..', '.env')
+  : path.join(__dirname, '..', '..', '.env');
 require('dotenv').config({ path: dotenvPath });
 
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
-const fs = require('fs');
-const path = require('path');
 
 const BUCKET = process.env.DO_SPACES_BUCKET || 'provey-media';
 const REGION = process.env.DO_SPACES_REGION || 'sgp1';
@@ -72,7 +72,7 @@ async function uploadToCDN() {
         Body: body,
         ContentType: 'application/json',
         ACL: 'public-read',
-        CacheControl: 'public, max-age=300', // 5 min cache
+        CacheControl: 'public, max-age=300',
       }));
 
       const size = (body.length / 1024).toFixed(1);

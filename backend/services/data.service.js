@@ -72,8 +72,8 @@ class DataService {
     try {
       const filePath = path.join(DATA_DIR, `${name}.json`);
       fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
-      // Invalidate cache so next CDN read picks up fresh data
-      this._cache.delete(name);
+      // Update cache with fresh local data so reads don't go back to stale CDN
+      this._cache.set(name, { data, fetchedAt: Date.now() });
     } finally {
       this._releaseLock(name);
     }

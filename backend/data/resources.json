@@ -3359,7 +3359,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.424Z",
+      "updatedAt": "2026-04-02T14:34:31.440Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3401,7 +3401,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.424Z",
+      "updatedAt": "2026-04-02T14:34:31.467Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3445,7 +3445,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.424Z",
+      "updatedAt": "2026-04-02T14:34:31.480Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3488,7 +3488,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.424Z",
+      "updatedAt": "2026-04-02T14:34:31.492Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3531,7 +3531,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.424Z",
+      "updatedAt": "2026-04-02T14:34:31.503Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3572,7 +3572,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.424Z",
+      "updatedAt": "2026-04-02T14:34:31.513Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3612,7 +3612,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.424Z",
+      "updatedAt": "2026-04-02T14:34:31.524Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3650,7 +3650,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.424Z",
+      "updatedAt": "2026-04-02T14:34:31.535Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3692,7 +3692,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.424Z",
+      "updatedAt": "2026-04-02T14:34:31.545Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3736,7 +3736,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.554Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3779,7 +3779,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.564Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3822,7 +3822,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.574Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3864,7 +3864,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.583Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3904,7 +3904,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.592Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3944,7 +3944,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.603Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -3985,7 +3985,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.612Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4026,7 +4026,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.621Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4066,7 +4066,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.634Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4095,7 +4095,7 @@
       "pricing": [],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z"
+      "updatedAt": "2026-04-02T14:34:31.643Z"
     },
     {
       "endpoint": "https://api.xona-agent.com/base/token/pumpfun-movers",
@@ -4106,7 +4106,7 @@
       "pricing": [],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z"
+      "updatedAt": "2026-04-02T14:34:31.652Z"
     },
     {
       "endpoint": "https://api.xona-agent.com/base/token/starter-kit",
@@ -4126,7 +4126,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.662Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4167,7 +4167,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.671Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4211,7 +4211,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.680Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4248,7 +4248,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.693Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4285,7 +4285,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.705Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4322,7 +4322,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.718Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4359,7 +4359,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.728Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4398,7 +4398,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.738Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4441,7 +4441,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.752Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4483,7 +4483,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.762Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4524,7 +4524,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.775Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4564,7 +4564,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.786Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4604,7 +4604,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.795Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4643,7 +4643,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.804Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4684,7 +4684,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.816Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4725,7 +4725,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.826Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4765,7 +4765,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.838Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4803,7 +4803,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.848Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4843,7 +4843,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.860Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4874,7 +4874,7 @@
       "pricing": [],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z"
+      "updatedAt": "2026-04-02T14:34:31.870Z"
     },
     {
       "endpoint": "https://api.xona-agent.com/base-main/token/pumpfun-movers",
@@ -4885,7 +4885,7 @@
       "pricing": [],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z"
+      "updatedAt": "2026-04-02T14:34:31.880Z"
     },
     {
       "endpoint": "https://api.xona-agent.com/base-main/token/starter-kit",
@@ -4905,7 +4905,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.890Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4946,7 +4946,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.900Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -4990,7 +4990,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.910Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5027,7 +5027,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.920Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5064,7 +5064,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.930Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5101,7 +5101,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.940Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5138,7 +5138,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.951Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5177,7 +5177,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.960Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5211,7 +5211,7 @@
       "pricing": [],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z"
+      "updatedAt": "2026-04-02T14:34:31.973Z"
     },
     {
       "endpoint": "https://api.xona-agent.com/token/pumpfun-movers",
@@ -5222,7 +5222,7 @@
       "pricing": [],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z"
+      "updatedAt": "2026-04-02T14:34:31.983Z"
     },
     {
       "endpoint": "https://api.xona-agent.com/token/starter-kit",
@@ -5242,7 +5242,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:31.994Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5283,7 +5283,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:32.004Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5327,7 +5327,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:32.016Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5364,7 +5364,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:32.026Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5401,7 +5401,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:32.039Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5438,7 +5438,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.187Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:32.049Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5475,7 +5475,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.188Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:32.060Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5514,7 +5514,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.188Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:32.069Z",
       "inputSchema": {
         "input": {
           "type": "http",
@@ -5557,7 +5557,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.188Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:32.080Z",
       "inputSchema": {
         "input": {
           "prompt": "string (required) - The detailed prompt description",
@@ -5589,7 +5589,7 @@
       ],
       "status": "active",
       "discoveredAt": "2026-04-02T07:27:44.188Z",
-      "updatedAt": "2026-04-02T10:25:13.425Z",
+      "updatedAt": "2026-04-02T14:34:32.089Z",
       "inputSchema": {
         "input": {
           "prompt": "string (required) - The detailed prompt description",
@@ -33559,7 +33559,7 @@
     }
   ],
   "meta": {
-    "lastDiscoveredAt": "2026-04-02T10:27:51.140Z",
+    "lastDiscoveredAt": "2026-04-02T14:34:32.089Z",
     "totalCount": 1100
   }
 }

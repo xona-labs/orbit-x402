@@ -134,9 +134,16 @@ router.post('/probe', async (req, res) => {
   const { url } = req.body || {};
   if (!url) return res.status(400).json({ error: 'url required' });
 
+  console.log(`[Probe] Starting probe for: ${url}`);
+
   try {
     const resources = await discoveryService.probeServerResources(url);
-    for (const r of resources) await dataService.addOrUpdateResource(r);
+    console.log(`[Probe] ${url} → ${resources.length} endpoints found`);
+
+    for (const r of resources) {
+      await dataService.addOrUpdateResource(r);
+    }
+    console.log(`[Probe] Saved ${resources.length} resources to data store`);
 
     const servers = dataService.read('servers')?.servers || [];
     const server = servers.find(s => s.serverUrl === url);
@@ -144,6 +151,9 @@ router.post('/probe', async (req, res) => {
       server.resourceCount = resources.length;
       server.lastProbedAt = new Date().toISOString();
       await dataService.addOrUpdateServer(server);
+      console.log(`[Probe] Updated server record for ${url}`);
+    } else {
+      console.log(`[Probe] Warning: server not found in servers.json for ${url}`);
     }
 
     res.json({ success: true, resources: resources.length, endpoints: resources });

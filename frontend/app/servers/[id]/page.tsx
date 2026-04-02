@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { getServerDetail, probeServer } from '@/lib/api';
+import { getServerDetail } from '@/lib/api';
 
 const METHOD_COLORS: Record<string, string> = {
   GET: 'text-emerald-400 bg-emerald-500/10',
@@ -45,7 +45,6 @@ export default function ServerDetailPage() {
   const [server, setServer] = useState<any>(null);
   const [resources, setResources] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [probing, setProbing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const load = async () => {
@@ -64,14 +63,6 @@ export default function ServerDetailPage() {
 
   useEffect(() => { load(); }, [serverUrl]);
 
-  const handleProbe = async () => {
-    setProbing(true);
-    try {
-      await probeServer(serverUrl);
-      await load();
-    } catch (err) { console.error(err); }
-    finally { setProbing(false); }
-  };
 
   if (loading) {
     return (
@@ -179,23 +170,12 @@ export default function ServerDetailPage() {
               {resources.length} endpoint{resources.length !== 1 ? 's' : ''}
             </span>
           </div>
-          <button onClick={handleProbe} disabled={probing}
-            className="px-3.5 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-[12px] text-neutral-400 hover:text-white hover:bg-white/[0.08] transition-all disabled:opacity-40">
-            {probing ? 'Probing...' : 'Probe Endpoints'}
-          </button>
         </div>
 
         {resources.length === 0 ? (
           <div className="glass-card p-8 text-center">
-            <p className="text-neutral-500 text-sm mb-4">
-              No endpoints discovered yet for this server.
-            </p>
-            <button onClick={handleProbe} disabled={probing}
-              className="px-4 py-2 rounded-lg bg-white text-black text-[13px] font-medium hover:bg-neutral-200 transition-all disabled:opacity-40">
-              {probing ? 'Probing...' : 'Discover Endpoints'}
-            </button>
-            <p className="text-[11px] text-neutral-600 mt-3">
-              This will probe the server's <code className="text-neutral-500">/.well-known/x402</code> discovery document.
+            <p className="text-neutral-500 text-sm">
+              No endpoints discovered yet. Data syncs automatically every 30 minutes.
             </p>
           </div>
         ) : (

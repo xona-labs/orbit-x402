@@ -108,8 +108,70 @@ export default function Dashboard() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="hero-gradient dot-grid border-b border-white/[0.04]">
-        <div className="max-w-7xl mx-auto px-6 pt-16 pb-14">
+      <section className="hero-gradient dot-grid border-b border-white/[0.04] relative overflow-hidden">
+        {/* Decorative vectors */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          {/* Top-left circuit lines */}
+          <svg className="absolute -top-6 -left-10 w-72 h-72 opacity-[0.04]" viewBox="0 0 300 300" fill="none" stroke="white" strokeWidth="1">
+            <path d="M20 120 L80 120 L80 60 L160 60" />
+            <path d="M20 160 L60 160 L60 200 L120 200 L120 140 L200 140" />
+            <path d="M40 220 L100 220 L100 260 L180 260" />
+            <circle cx="80" cy="120" r="3" fill="white" />
+            <circle cx="160" cy="60" r="3" fill="white" />
+            <circle cx="120" cy="200" r="3" fill="white" />
+            <circle cx="200" cy="140" r="3" fill="white" />
+            <circle cx="180" cy="260" r="3" fill="white" />
+          </svg>
+
+          {/* Top-right network nodes */}
+          <svg className="absolute -top-4 -right-8 w-80 h-80 opacity-[0.04]" viewBox="0 0 320 320" fill="none" stroke="white" strokeWidth="1">
+            <path d="M280 80 L220 80 L220 140 L160 140" />
+            <path d="M300 140 L240 140 L240 200 L180 200" />
+            <path d="M260 40 L200 40 L200 100 L140 100 L140 180" />
+            <circle cx="220" cy="80" r="3" fill="white" />
+            <circle cx="160" cy="140" r="3" fill="white" />
+            <circle cx="240" cy="200" r="3" fill="white" />
+            <circle cx="200" cy="40" r="3" fill="white" />
+            <circle cx="140" cy="180" r="3" fill="white" />
+          </svg>
+
+          {/* Bottom-left hexagonal pattern */}
+          <svg className="absolute -bottom-10 -left-6 w-64 h-64 opacity-[0.03]" viewBox="0 0 260 260" fill="none" stroke="white" strokeWidth="0.8">
+            <polygon points="60,30 90,15 120,30 120,60 90,75 60,60" />
+            <polygon points="120,30 150,15 180,30 180,60 150,75 120,60" />
+            <polygon points="90,75 120,60 150,75 150,105 120,120 90,105" />
+            <polygon points="60,120 90,105 120,120 120,150 90,165 60,150" />
+            <polygon points="120,120 150,105 180,120 180,150 150,165 120,150" />
+          </svg>
+
+          {/* Bottom-right abstract paths */}
+          <svg className="absolute -bottom-8 -right-12 w-72 h-72 opacity-[0.03]" viewBox="0 0 300 300" fill="none" stroke="white" strokeWidth="0.8">
+            <path d="M180 280 L180 220 L240 220 L240 160 L300 160" />
+            <path d="M200 260 L260 260 L260 200 L300 200" />
+            <path d="M220 300 L220 240 L280 240 L280 180" />
+            <circle cx="180" cy="220" r="2.5" fill="white" />
+            <circle cx="240" cy="160" r="2.5" fill="white" />
+            <circle cx="260" cy="260" r="2.5" fill="white" />
+            <circle cx="280" cy="180" r="2.5" fill="white" />
+          </svg>
+
+          {/* Center floating dots */}
+          <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] opacity-[0.025]" viewBox="0 0 600 400" fill="white">
+            <circle cx="80" cy="60" r="1.5" />
+            <circle cx="520" cy="80" r="1.5" />
+            <circle cx="150" cy="340" r="1.5" />
+            <circle cx="450" cy="320" r="1.5" />
+            <circle cx="40" cy="200" r="1" />
+            <circle cx="560" cy="200" r="1" />
+            <circle cx="200" cy="100" r="1" />
+            <circle cx="400" cy="100" r="1" />
+            <circle cx="300" cy="350" r="1" />
+            <circle cx="100" cy="280" r="1.5" />
+            <circle cx="500" cy="260" r="1.5" />
+          </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 pt-16 pb-14 relative">
           <div className="max-w-2xl mx-auto text-center">
             <div className="animate-fade-in">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[12px] text-neutral-400 mb-6">
