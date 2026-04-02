@@ -52,8 +52,8 @@
         {
           "address": "DEXVS3su4dZQWTvvPnLDJLRK1CeeKG6K3QqdzthgAkNV",
           "dateOfFirstTransaction": "2025-10-26",
-          "lastSyncedAt": "2026-04-02T10:10:20.990Z",
-          "lastSignature": "2pKzQtgpK7wEWZxFeBooDDh7mZeTefs67eanAQCEQm3Jpr3QStXU7Z1Sijb2JEBpeQyMuxQkJeCrNh7NPqBotVgh"
+          "lastSyncedAt": "2026-04-02T10:21:57.456Z",
+          "lastSignature": "2TuKFpYgtM3AhKSD6zEzDi8uu9jcCwexDYRGr6PvxSNt634Vi5bUocnQx4Y4UbG6U1TZrTn2QH3XU1gHAGZgTWV"
         }
       ],
       "token": {
@@ -62,10 +62,10 @@
         "decimals": 6
       },
       "stats": {
-        "totalTransactions": 2111,
-        "totalVolume": 76.71,
-        "uniqueCounterparties": 72,
-        "lastActivityAt": "2026-04-02T10:09:46.000Z"
+        "totalTransactions": 2178,
+        "totalVolume": 78.83,
+        "uniqueCounterparties": 73,
+        "lastActivityAt": "2026-04-02T10:19:57.000Z"
       }
     },
     {
@@ -81,7 +81,7 @@
         {
           "address": "4x4ZhcqiT1FnirM8Ne97iVupkN4NcQgc2YYbE2jDZbZn",
           "dateOfFirstTransaction": "2026-01-23",
-          "lastSyncedAt": "2026-04-02T10:10:21.946Z",
+          "lastSyncedAt": "2026-04-02T10:21:58.451Z",
           "lastSignature": "5cTqLwSU5RzcnKGo3MHfKVdDVy5L3icR2K3Cx8zAiDgGtsbPrnHUjMJbLjqu4VWSaqfU5WF3dQ82J7H2BbMLTKZ3"
         }
       ],
