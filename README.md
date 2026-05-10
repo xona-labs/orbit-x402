@@ -1,8 +1,23 @@
 # OrbitX402
 
-Open-source discovery layer for x402 paid API resources on Solana.
+**Open-source discovery layer for x402 paid API resources on Solana.**
 
-OrbitX402 indexes x402-enabled servers, tracks USDC transactions through payment facilitators, and provides LLM-powered natural language search — so AI agents can find and consume paid APIs without manual configuration.
+OrbitX402 indexes x402-enabled servers, probes their endpoints, and provides LLM-powered natural language search over the resource catalog — so AI agents can find and consume the exact paid API they need without manual configuration.
+
+> Think DNS + Google for the agent economy: a single, queryable index of every paid API an autonomous agent can pay-and-call.
+
+## Thesis
+
+The next phase of the internet is **machine-payable**. Agents need to spend money to get work done — call premium models, fetch data, generate media — and `x402` makes that possible at the protocol level: a cleared HTTP 402 plus a USDC payment header is all an agent needs to consume a service.
+
+But protocol-level payment isn't enough. Two real bottlenecks remain:
+
+1. **Discovery is broken.** An agent given a goal ("find me cheapest image generation on Solana") has no way to know what's out there. Servers are scattered, schemas are inconsistent, prices are hidden until you hit `402`. Hard-coded URLs don't scale across thousands of providers.
+2. **Integration is manual.** Today, every team writing an agent re-implements server lookup, endpoint parsing, pricing logic. That's the wrong layer for that work.
+
+**OrbitX402's bet:** the agent economy needs a public, neutral, LLM-readable index of every paid API resource — addressable through a single endpoint and a one-paste `skill.md`. We index servers from `x402scan`, probe each one's `/.well-known/x402` for live pricing, and let any agent ask in natural language. Add the skill, ship the agent, get paid. That's the loop.
+
+We're building the discovery primitive so the rest of the stack (agents, wallets, models) can ride on top.
 
 ## How It Works
 
@@ -13,10 +28,10 @@ Agent: "find cheapest image generation on Solana"
 OrbitX402 API (POST /api/discover)
   |
   v
-LLM ranks 58+ servers by relevance, price, and activity
+LLM ranks resources across 58+ servers by relevance, price, and activity
   |
   v
-Returns: server, endpoints, pricing, pay-to address
+Returns: matching endpoints, pricing, server, pay-to address
   |
   v
 Agent calls the x402 endpoint with USDC payment
@@ -24,10 +39,10 @@ Agent calls the x402 endpoint with USDC payment
 
 ## Features
 
-- **LLM Discovery** — natural language search across all indexed x402 servers and endpoints
+- **Resource Catalog** — every x402 endpoint discovered across the network, with method, description, and real pricing from 402 responses
+- **LLM Discovery** — natural language search ranks resources by relevance for any agent query
 - **Server Index** — auto-synced from x402scan.com with transaction stats and volume data
-- **Endpoint Probing** — discovers resources from each server's `/.well-known/x402` with real pricing from 402 responses
-- **Transfer Scanner** — tracks USDC transfers through facilitator wallets (PayAI, Dexter, Relai) via Solana RPC
+- **Endpoint Probing** — pulls resources from each server's `/.well-known/x402`
 - **Skill MD** — drop-in agent skill file, add to any agent's system prompt in one step
 - **Server Registration** — external servers can self-register via API
 - **CDN-backed** — JSON data synced to DigitalOcean Spaces, backend reads from CDN with in-memory cache
@@ -100,6 +115,9 @@ curl /skill.md
 # List servers (Solana)
 curl /api/servers?chain=solana
 
+# Search servers
+curl "/api/servers?search=analytics"
+
 # Server detail + endpoints
 curl /api/servers/detail?url=https://api.nansen.ai
 
@@ -115,16 +133,14 @@ curl -X POST /api/servers/register \
 # List all endpoints
 curl /api/resources
 
+# Search the catalog
+curl "/api/resources?search=image+generation"
+
+# Filter by HTTP method
+curl /api/resources?method=POST
+
 # Filter by server
 curl /api/resources?server=https://api.nansen.ai
-```
-
-### Facilitators & Transactions
-
-```bash
-curl /api/facilitators
-curl /api/transfers?facilitator=dexter&limit=20
-curl /api/stats?period=24h
 ```
 
 Full documentation at `/docs`.
@@ -135,12 +151,11 @@ Full documentation at `/docs`.
 orbitx402/
 ├── backend/                    Express.js API (port 3088)
 │   ├── services/
-│   │   ├── scanner.service     Solana RPC transfer scanner
 │   │   ├── discovery.service   x402scan sync + endpoint probing
 │   │   ├── llm-discovery       Gemini-powered search
 │   │   └── data.service        JSON read/write + CDN cache
 │   ├── routes/                 API endpoints
-│   ├── jobs/                   Cron sync (transfers + servers + CDN upload)
+│   ├── jobs/                   Cron sync (servers + CDN upload)
 │   ├── scripts/                Standalone sync + CDN upload
 │   ├── data/                   JSON data files
 │   └── skill.md                Agent skill instructions
@@ -156,7 +171,6 @@ orbitx402/
 ### Data Flow
 
 ```
-Solana RPC ──────> transfers.json ──> facilitator stats
 x402scan.com ────> servers.json
 Server probes ───> resources.json (endpoints + pricing from 402 responses)
                         |
@@ -186,14 +200,17 @@ Server probes ───> resources.json (endpoints + pricing from 402 responses)
 | `DO_SPACES_PREFIX` | No | Key prefix for data files |
 | `NEXT_PUBLIC_API_URL` | No | Backend URL for frontend (default: http://localhost:3088) |
 
-## Facilitators Tracked
+## Built For Hackathon
 
-| Facilitator | Solana Addresses | Color |
-|---|---|---|
-| **PayAI** | 3 addresses | Purple |
-| **Dexter** | 1 address | Orange |
-| **Relai** | 1 address | Violet |
+OrbitX402 was built to make `x402` actually usable at the agent layer. Concretely:
+
+- **One-paste integration** — `curl /skill.md` → drop into a system prompt → your agent can now discover and call paid APIs.
+- **Live network coverage** — sync from `x402scan` + automatic `/.well-known/x402` probing means new providers show up without manual curation.
+- **No lock-in** — the index, the API, and the frontend are open-source (MIT). Self-host the whole thing in `docker compose up -d`.
+- **LLM-native ranking** — Gemini Flash reads the catalog and ranks by relevance, with a deterministic keyword fallback so the system stays useful without an API key.
+
+What we'd build next given more time: paid-call telemetry to surface "actually working" endpoints, on-chain reputation per server, agent-side SDKs for Python and TypeScript, and a marketplace incentive for providers to keep their `/.well-known/x402` accurate.
 
 ## License
 
-MIT
+MIT — use it, fork it, ship something.

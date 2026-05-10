@@ -58,7 +58,6 @@ class LLMDiscoveryService {
         `URL: ${server.serverUrl}`,
         `Description: ${server.description || 'N/A'}`,
         `Chains: ${(server.chains || []).join(', ') || 'N/A'}`,
-        `Facilitators: ${(server.facilitators || []).join(', ') || 'N/A'}`,
         `Stats: ${server.stats?.transactionCount || 0} txns, $${server.stats?.totalVolume || 0} volume, ${server.stats?.uniqueBuyers || 0} buyers`,
         endpoints.length > 0 ? `Endpoints (${endpoints.length}): ${endpointList}${more}` : 'Endpoints: not probed yet',
         '',
@@ -95,7 +94,7 @@ RULES:
 - Max 10 results
 - If nothing matches, return empty array []
 - Infer functionality from URL paths (e.g. /api/v1/chat/completions = LLM, /api/v1/images = image generation)
-- Consider chains and facilitators when the user specifies them
+- Consider chains when the user specifies them
 - Consider volume/txn stats as quality signals
 
 CATALOG:

@@ -1,12 +1,13 @@
 # OrbitX402 Discovery
 
-Discover x402-enabled servers and paid API resources across the Solana network. OrbitX402 indexes x402 servers from x402scan.com, probes their endpoints, and provides LLM-powered natural language search.
+Discover x402-enabled servers and the paid API resources they expose across the Solana network. OrbitX402 indexes x402 servers, probes their `/.well-known/x402` endpoints, and provides LLM-powered natural language search — so agents can find the right server + endpoint and call it with USDC.
 
 ## Capabilities
 
-- **Discover resources** by natural language prompt (e.g., "find cheapest LLM on Solana")
-- **List x402 servers** with filtering by chain, facilitator, and keyword search
-- **Get server details** including all available endpoints and pricing
+- **Discover** servers and resources by natural language prompt
+- **List servers** with filtering by chain and keyword
+- **List resources** (endpoints) across all servers with method/server/keyword filters
+- **Get server details** including the full endpoint list with pricing
 - **Register new servers** to make them discoverable
 
 ## Base URL
@@ -19,7 +20,7 @@ https://api.orbitx402.com
 
 ### 1. discover — Natural Language Search (Recommended)
 
-Send a natural language query to find relevant x402 servers and resources.
+Send a natural language query to find the most relevant servers and their endpoints.
 
 ```
 POST /api/discover
@@ -28,13 +29,13 @@ Content-Type: application/json
 { "query": "find image generation APIs on Solana" }
 ```
 
-Response includes ranked results with server details, endpoints, and relevance reasoning.
+Response includes ranked servers with their endpoints, pricing, stats, and a relevance reason.
 
 **Example queries:**
-- "cheapest LLM inference available"
-- "blockchain analytics tools on Solana"
-- "image generation or creative AI services"
-- "email sending services via x402"
+- "cheapest LLM inference"
+- "blockchain analytics endpoints"
+- "image generation or creative AI"
+- "email sending services"
 - "search or web crawling APIs"
 
 ### 2. list_servers — Browse All Servers
@@ -42,21 +43,31 @@ Response includes ranked results with server details, endpoints, and relevance r
 ```
 GET /api/servers
 GET /api/servers?chain=solana
-GET /api/servers?facilitator=dexter
 GET /api/servers?search=analytics
 ```
 
-Returns paginated list of servers with stats (transactions, volume, buyers).
+Returns paginated servers with stats (transactions, volume, buyers) and resource counts.
 
-### 3. server_detail — Get Server + Endpoints
+### 3. list_resources — Browse the Resource Catalog
+
+```
+GET /api/resources
+GET /api/resources?search=image+generation
+GET /api/resources?method=POST
+GET /api/resources?server=https://api.nansen.ai
+```
+
+Returns paginated x402 endpoints with `slug`, `endpoint`, `method`, `description`, `pricing`, and `serverUrl`.
+
+### 4. server_detail — Get Server + Endpoints
 
 ```
 GET /api/servers/detail?url=https://api.nansen.ai
 ```
 
-Returns full server info and all its x402 endpoints.
+Returns the full server info plus every x402 endpoint it exposes.
 
-### 4. register_server — Register Your Server
+### 5. register_server — Register a New Server
 
 ```
 POST /api/servers/register
@@ -65,14 +76,14 @@ Content-Type: application/json
 { "url": "https://your-server.com" }
 ```
 
-Registers a new x402 server. The system probes `/.well-known/x402` to discover endpoints automatically.
+The system probes `/.well-known/x402` to discover endpoints automatically.
 
 ## Guidelines
 
-- Use the `discover` action first — it uses AI to find the best matches for any natural language query
-- Fall back to `list_servers` with search params if you need exact filtering
-- Use `server_detail` to get the full endpoint list before calling an x402 resource
-- When calling an x402 endpoint, include a valid x402 payment header (PAYMENT-SIGNATURE or X-PAYMENT)
+- Use `discover` first — it ranks servers + endpoints by relevance for any natural language query
+- Use `list_resources` when the agent already knows what kind of endpoint it needs (by method/keyword)
+- Use `list_servers` to browse providers, then `server_detail` for the full endpoint list
+- When calling an x402 endpoint, include a valid x402 payment header (`X-PAYMENT`)
 - All pricing is in USDC on Solana unless otherwise specified
 
 ## Parameters Schema
@@ -86,7 +97,7 @@ Registers a new x402 server. The system probes `/.well-known/x402` to discover e
     "properties": {
       "action": {
         "type": "string",
-        "enum": ["discover", "list_servers", "server_detail", "register_server"],
+        "enum": ["discover", "list_servers", "list_resources", "server_detail", "register_server"],
         "description": "The action to perform"
       },
       "query": {
@@ -95,19 +106,19 @@ Registers a new x402 server. The system probes `/.well-known/x402` to discover e
       },
       "chain": {
         "type": "string",
-        "description": "Filter by blockchain (e.g., 'solana', 'base')"
-      },
-      "facilitator": {
-        "type": "string",
-        "description": "Filter by payment facilitator (e.g., 'dexter', 'payAI', 'relai')"
+        "description": "Filter servers by blockchain (e.g., 'solana', 'base')"
       },
       "search": {
         "type": "string",
-        "description": "Keyword search for list_servers"
+        "description": "Keyword search for list_servers or list_resources"
+      },
+      "method": {
+        "type": "string",
+        "description": "Filter resources by HTTP method (GET, POST, etc.)"
       },
       "server_url": {
         "type": "string",
-        "description": "Server URL (for server_detail or register_server)"
+        "description": "Server URL (for list_resources filter, server_detail, or register_server)"
       }
     },
     "required": ["action"]
