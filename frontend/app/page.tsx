@@ -8,6 +8,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3088';
 export default function Dashboard() {
   const [topServers, setTopServers] = useState<any[]>([]);
   const [recentResources, setRecentResources] = useState<any[]>([]);
+  const [counts, setCounts] = useState<{ servers: number; resources: number } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -18,15 +19,20 @@ export default function Dashboard() {
   const load = async () => {
     try {
       setLoading(true);
-      const [srv, res] = await Promise.all([
+      const [srvAll, srv, res] = await Promise.all([
+        getServers({ chain: 'solana', limit: '500' }),
         getServers({ chain: 'solana', limit: '6' }),
-        getResources({ limit: '8' }),
+        getResources({ limit: '500' }),
       ]);
       const sorted = (srv.servers || []).slice().sort((a: any, b: any) =>
         (b.stats?.totalVolume || 0) - (a.stats?.totalVolume || 0)
       );
       setTopServers(sorted.slice(0, 6));
       setRecentResources((res.resources || []).slice(0, 8));
+      setCounts({
+        servers: srvAll.total ?? (srvAll.servers?.length || 0),
+        resources: res.total ?? (res.resources?.length || 0),
+      });
       setError(null);
     } catch (err: any) {
       setError('Failed to load data. Make sure the backend is running on port 3088.');
@@ -270,6 +276,36 @@ export default function Dashboard() {
         {error && (
           <div className="glass-card p-4 border-amber-500/30 text-amber-700 dark:text-amber-400/80 text-sm">
             {error}
+          </div>
+        )}
+
+        {/* Network Stats */}
+        {counts && (
+          <div className="grid grid-cols-2 gap-4">
+            <div className="glass-card p-6 stat-card">
+              <div className="section-label">Indexed Servers</div>
+              <div className="mt-3 flex items-baseline gap-2">
+                <span className="font-display text-5xl md:text-6xl text-gradient-chrome leading-none">
+                  {counts.servers.toLocaleString()}
+                </span>
+                <span className="text-foreground/45 text-[13px] font-mono">x402</span>
+              </div>
+              <div className="mt-2 text-[12px] text-foreground/55">
+                Solana servers auto-synced from x402scan + community registrations
+              </div>
+            </div>
+            <div className="glass-card p-6 stat-card">
+              <div className="section-label">Discovered Endpoints</div>
+              <div className="mt-3 flex items-baseline gap-2">
+                <span className="font-display text-5xl md:text-6xl text-gradient-chrome leading-none">
+                  {counts.resources.toLocaleString()}
+                </span>
+                <span className="text-foreground/45 text-[13px] font-mono">resources</span>
+              </div>
+              <div className="mt-2 text-[12px] text-foreground/55">
+                Probed from each server's <span className="font-mono">/.well-known/x402</span> with live pricing
+              </div>
+            </div>
           </div>
         )}
 
