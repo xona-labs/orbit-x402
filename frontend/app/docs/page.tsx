@@ -8,7 +8,7 @@ const sections = [
   {
     id: 'overview',
     title: 'Overview',
-    content: `OrbitX402 is an open-source x402 discovery layer for AI agents on the Solana network. It indexes x402-enabled servers, tracks USDC transfers through facilitators, and provides LLM-powered natural language search for agents to find and consume paid API resources.`,
+    content: `OrbitX402 is an open-source x402 discovery layer for AI agents on the Solana network. It indexes x402-enabled servers, probes their endpoints, and provides LLM-powered natural language search for agents to find and consume paid API resources.`,
   },
   {
     id: 'quickstart',
@@ -57,7 +57,6 @@ Fetch the skill instructions and add them to your agent's system prompt:`,
     code: `curl "${API_BASE}/api/servers?chain=solana&search=analytics&limit=10"`,
     params: [
       { name: 'chain', type: 'string', required: false, desc: 'Filter by blockchain (solana, base, polygon)' },
-      { name: 'facilitator', type: 'string', required: false, desc: 'Filter by facilitator (dexter, payAI, relai)' },
       { name: 'search', type: 'string', required: false, desc: 'Keyword search on title/description/URL' },
       { name: 'page', type: 'number', required: false, desc: 'Page number (default: 1)' },
       { name: 'limit', type: 'number', required: false, desc: 'Items per page (default: 50, max: 100)' },
@@ -112,34 +111,11 @@ Fetch the skill instructions and add them to your agent's system prompt:`,
     ],
   },
   {
-    id: 'facilitators',
-    title: 'GET /api/facilitators',
-    subtitle: 'Payment Facilitators',
-    content: 'List x402 payment facilitators tracked on the Solana network (PayAI, Dexter, Relai).',
-    code: `curl ${API_BASE}/api/facilitators`,
-  },
-  {
-    id: 'transfers',
-    title: 'GET /api/transfers',
-    subtitle: 'Transaction History',
-    content: 'Paginated USDC transactions through x402 facilitators on Solana.',
-    code: `curl "${API_BASE}/api/transfers?facilitator=dexter&limit=20"`,
-    params: [
-      { name: 'facilitator', type: 'string', required: false, desc: 'Filter by facilitator ID' },
-      { name: 'direction', type: 'string', required: false, desc: 'sent or received' },
-      { name: 'page', type: 'number', required: false, desc: 'Page number' },
-      { name: 'limit', type: 'number', required: false, desc: 'Items per page (max: 200)' },
-    ],
-  },
-  {
     id: 'stats',
     title: 'GET /api/stats',
     subtitle: 'Ecosystem Stats',
-    content: 'Aggregated statistics: total volume, transactions, servers, endpoints, daily volume breakdown. Supports period filtering.',
-    code: `curl "${API_BASE}/api/stats?period=24h"`,
-    params: [
-      { name: 'period', type: 'string', required: false, desc: '24h, 7d, 30d, or omit for all time' },
-    ],
+    content: 'Aggregated statistics: total servers, endpoints, and high-level ecosystem activity.',
+    code: `curl ${API_BASE}/api/stats`,
   },
 ];
 
@@ -181,8 +157,8 @@ export default function DocsPage() {
                   href={`#${s.id}`}
                   className={`block px-3 py-1.5 rounded-lg text-[13px] transition-all ${
                     activeId === s.id
-                      ? 'text-white bg-white/[0.06]'
-                      : 'text-neutral-500 hover:text-neutral-300'
+                      ? 'text-foreground bg-foreground/[0.08]'
+                      : 'text-foreground/55 hover:text-foreground/80'
                   }`}
                 >
                   {s.title}
@@ -196,8 +172,8 @@ export default function DocsPage() {
         <div className="flex-1 min-w-0 space-y-14">
           {/* Header */}
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">API Documentation</h1>
-            <p className="text-neutral-400 text-[15px]">
+            <h1 className="text-3xl font-bold text-foreground mb-2">API Documentation</h1>
+            <p className="text-foreground/65 text-[15px]">
               Everything you need to integrate OrbitX402 discovery into your agent or application.
             </p>
           </div>
@@ -206,15 +182,15 @@ export default function DocsPage() {
           {sections.map(s => (
             <section key={s.id} id={s.id} className="space-y-4 scroll-mt-24">
               <div>
-                <h2 className="text-xl font-bold text-white">
+                <h2 className="text-xl font-bold text-foreground">
                   {s.title}
                 </h2>
                 {s.subtitle && (
-                  <span className="text-[13px] text-neutral-500">{s.subtitle}</span>
+                  <span className="text-[13px] text-foreground/55">{s.subtitle}</span>
                 )}
               </div>
 
-              <p className="text-[14px] text-neutral-400 leading-relaxed whitespace-pre-line">
+              <p className="text-[14px] text-foreground/65 leading-relaxed whitespace-pre-line">
                 {s.content}
               </p>
 
@@ -223,26 +199,26 @@ export default function DocsPage() {
                 <div className="glass-card overflow-hidden">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="border-b border-white/[0.04]">
-                        <th className="px-4 py-2 text-left text-[11px] text-neutral-500 uppercase tracking-wider font-medium">Param</th>
-                        <th className="px-4 py-2 text-left text-[11px] text-neutral-500 uppercase tracking-wider font-medium">Type</th>
-                        <th className="px-4 py-2 text-left text-[11px] text-neutral-500 uppercase tracking-wider font-medium">Required</th>
-                        <th className="px-4 py-2 text-left text-[11px] text-neutral-500 uppercase tracking-wider font-medium">Description</th>
+                      <tr className="border-b border-foreground/[0.08]">
+                        <th className="px-4 py-2 text-left text-[11px] text-foreground/55 uppercase tracking-wider font-medium">Param</th>
+                        <th className="px-4 py-2 text-left text-[11px] text-foreground/55 uppercase tracking-wider font-medium">Type</th>
+                        <th className="px-4 py-2 text-left text-[11px] text-foreground/55 uppercase tracking-wider font-medium">Required</th>
+                        <th className="px-4 py-2 text-left text-[11px] text-foreground/55 uppercase tracking-wider font-medium">Description</th>
                       </tr>
                     </thead>
                     <tbody>
                       {s.params.map((p: any) => (
-                        <tr key={p.name} className="border-b border-white/[0.02]">
-                          <td className="px-4 py-2 font-mono text-[12px] text-white">{p.name}</td>
-                          <td className="px-4 py-2 text-[12px] text-neutral-500">{p.type}</td>
+                        <tr key={p.name} className="border-b border-foreground/[0.04]">
+                          <td className="px-4 py-2 font-mono text-[12px] text-foreground">{p.name}</td>
+                          <td className="px-4 py-2 text-[12px] text-foreground/55">{p.type}</td>
                           <td className="px-4 py-2 text-[12px]">
                             {p.required ? (
-                              <span className="text-amber-400">yes</span>
+                              <span className="text-amber-700 dark:text-amber-400">yes</span>
                             ) : (
-                              <span className="text-neutral-600">no</span>
+                              <span className="text-foreground/40">no</span>
                             )}
                           </td>
-                          <td className="px-4 py-2 text-[12px] text-neutral-400">{p.desc}</td>
+                          <td className="px-4 py-2 text-[12px] text-foreground/65">{p.desc}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -252,7 +228,7 @@ export default function DocsPage() {
 
               {/* Code block */}
               {s.code && (
-                <pre className="glass-card p-4 overflow-x-auto text-[12px] font-mono text-neutral-300 leading-relaxed no-scrollbar">
+                <pre className="glass-card p-4 overflow-x-auto text-[12px] font-mono text-foreground/80 leading-relaxed no-scrollbar">
                   {s.code}
                 </pre>
               )}
@@ -260,8 +236,8 @@ export default function DocsPage() {
               {/* Response */}
               {s.response && (
                 <div>
-                  <span className="text-[11px] text-neutral-500 uppercase tracking-wider">Response</span>
-                  <pre className="glass-card p-4 mt-2 overflow-x-auto text-[12px] font-mono text-neutral-400 leading-relaxed no-scrollbar">
+                  <span className="text-[11px] text-foreground/55 uppercase tracking-wider">Response</span>
+                  <pre className="glass-card p-4 mt-2 overflow-x-auto text-[12px] font-mono text-foreground/65 leading-relaxed no-scrollbar">
                     {s.response}
                   </pre>
                 </div>
@@ -269,7 +245,7 @@ export default function DocsPage() {
 
               {/* Note */}
               {s.note && (
-                <div className="glass-card p-3 text-[12px] text-neutral-500 border-l-2 border-neutral-600">
+                <div className="glass-card p-3 text-[12px] text-foreground/55 border-l-2 border-foreground/30">
                   {s.note}
                 </div>
               )}

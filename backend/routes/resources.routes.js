@@ -3,10 +3,10 @@ const router = express.Router();
 const dataService = require('../services/data.service');
 
 // GET /api/resources — list all discovered x402 endpoints
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   const { server, method, search, page = 1, limit = 100 } = req.query;
 
-  let resources = dataService.getResources();
+  let resources = await dataService.getResources();
 
   if (server) {
     resources = resources.filter(r => r.serverUrl === server);
