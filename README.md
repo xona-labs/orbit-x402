@@ -152,7 +152,7 @@ orbitx402/
 ├── backend/                    Express.js API (port 3088)
 │   ├── services/
 │   │   ├── discovery.service   x402scan sync + endpoint probing
-│   │   ├── llm-discovery       Gemini-powered search
+│   │   ├── llm-discovery       LLM-powered search
 │   │   └── data.service        JSON read/write + CDN cache
 │   ├── routes/                 API endpoints
 │   ├── jobs/                   Cron sync (servers + CDN upload)
@@ -181,7 +181,7 @@ Server probes ───> resources.json (endpoints + pricing from 402 responses)
                   Backend API ───> Frontend
                         |
                         v
-                  LLM Discovery (Gemini Flash)
+                  LLM Discovery
 ```
 
 ## Environment Variables
@@ -191,7 +191,7 @@ Server probes ───> resources.json (endpoints + pricing from 402 responses)
 | `PORT` | No | Backend port (default: 3088) |
 | `SOLANA_RPC_URL` | No | Solana RPC endpoint (default: public mainnet) |
 | `SYNC_INTERVAL_MINUTES` | No | Cron sync interval (default: 30) |
-| `GEMINI_API_KEY` | No | Enables LLM discovery search (falls back to keyword search) |
+| `GEMINI_API_KEY` | No | API key for the LLM provider used by discovery search (falls back to keyword search if missing) |
 | `CDN_BASE_URL` | No | CDN URL for reading JSON data |
 | `DO_SPACES_KEY` | No | DigitalOcean Spaces access key (enables CDN upload) |
 | `DO_SPACES_SECRET` | No | DigitalOcean Spaces secret key |
@@ -207,7 +207,7 @@ OrbitX402 was built to make `x402` actually usable at the agent layer. Concretel
 - **One-paste integration** — `curl /skill.md` → drop into a system prompt → your agent can now discover and call paid APIs.
 - **Live network coverage** — sync from `x402scan` + automatic `/.well-known/x402` probing means new providers show up without manual curation.
 - **No lock-in** — the index, the API, and the frontend are open-source (MIT). Self-host the whole thing in `docker compose up -d`.
-- **LLM-native ranking** — Gemini Flash reads the catalog and ranks by relevance, with a deterministic keyword fallback so the system stays useful without an API key.
+- **LLM-native ranking** — an LLM reads the catalog and ranks by relevance, with a deterministic keyword fallback so the system stays useful without an API key.
 
 What we'd build next given more time: paid-call telemetry to surface "actually working" endpoints, on-chain reputation per server, agent-side SDKs for Python and TypeScript, and a marketplace incentive for providers to keep their `/.well-known/x402` accurate.
 

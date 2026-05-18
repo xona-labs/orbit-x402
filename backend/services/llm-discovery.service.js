@@ -142,6 +142,7 @@ ${catalog}`;
             slug: r.slug,
             method: r.method,
             description: r.description,
+            pricing: r.pricing,
           })),
         };
       }).filter(Boolean);
@@ -150,7 +151,6 @@ ${catalog}`;
         query,
         results,
         total: results.length,
-        model: MODEL,
         fallback: false,
       };
     } catch (err) {
@@ -201,11 +201,10 @@ ${catalog}`;
           resourceCount: s.serverResources.length,
         },
         resources: s.serverResources.slice(0, 20).map(r => ({
-          endpoint: r.endpoint, slug: r.slug, method: r.method, description: r.description,
+          endpoint: r.endpoint, slug: r.slug, method: r.method, description: r.description, pricing: r.pricing,
         })),
       })),
       total: scored.length,
-      model: null,
       fallback: true,
     };
   }

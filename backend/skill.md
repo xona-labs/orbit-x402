@@ -29,7 +29,7 @@ Content-Type: application/json
 { "query": "find image generation APIs on Solana" }
 ```
 
-Response includes ranked servers with their endpoints, pricing, stats, and a relevance reason.
+Response includes ranked servers with their endpoints (each including `pricing`), stats, and a relevance reason.
 
 **Example queries:**
 - "cheapest LLM inference"
