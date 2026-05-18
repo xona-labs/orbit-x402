@@ -19,6 +19,7 @@ app.use('/api/transfers', require('./routes/transfers.routes'));
 app.use('/api/servers', require('./routes/servers.routes'));
 app.use('/api/resources', require('./routes/resources.routes'));
 app.use('/api/discover', require('./routes/discover.routes'));
+app.use('/api/services-list', require('./routes/services-list.routes'));
 app.use('/api/stats', require('./routes/stats.routes'));
 
 // Skill MD
@@ -51,6 +52,7 @@ app.get('/', (req, res) => {
     version: '1.0.0',
     endpoints: {
       discover: 'POST /api/discover',
+      'services-list': '/api/services-list?limit=100&offset=0',
       servers: '/api/servers',
       'servers/register': 'POST /api/servers/register',
       'servers/detail': '/api/servers/detail?url=',
