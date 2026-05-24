@@ -73,16 +73,19 @@ router.get('/', async (req, res) => {
   for (const r of orbit) {
     if (!r.endpoint) continue;
     const mapped = orbitResourceToXpay(r);
+    if (!mapped.accepts.length) continue; // skip unprobed
     seen.add(r.endpoint);
     all.push(mapped);
   }
   for (const r of payai) {
     if (!r.resource || seen.has(r.resource)) continue;
+    if (!r.accepts?.length) continue; // skip unprobed
     seen.add(r.resource);
     all.push(r);
   }
   for (const r of paysh) {
     if (!r.resource || seen.has(r.resource)) continue;
+    if (!r.accepts?.length) continue; // skip until probed by sync job
     seen.add(r.resource);
     all.push(r);
   }

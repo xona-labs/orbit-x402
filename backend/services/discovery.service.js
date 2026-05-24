@@ -312,7 +312,7 @@ class DiscoveryService {
    */
   async runFullDiscovery(opts = {}) {
     const { probeEndpoints = true } = opts;
-    const results = { servers: 0, resources: 0, errors: [] };
+    const results = { servers: 0, resources: 0, paysh: 0, errors: [] };
 
     // Phase 1: Sync servers
     try {
@@ -335,10 +335,9 @@ class DiscoveryService {
           const endpoints = await this.probeServerResources(server.serverUrl);
 
           if (endpoints.length > 0) {
-            const added = await dataService.bulkAddResources(endpoints);
+            await dataService.bulkAddResources(endpoints);
             results.resources += endpoints.length;
 
-            // Update server resource count
             server.resourceCount = endpoints.length;
             server.lastProbedAt = new Date().toISOString();
             await dataService.addOrUpdateServer(server);
@@ -353,8 +352,73 @@ class DiscoveryService {
       }
     }
 
-    console.log(`[Discovery] Full discovery complete. Servers: ${results.servers}, Resources: ${results.resources}`);
+    // Phase 3: Sync pay.sh catalog + probe each service URL
+    try {
+      results.paysh = await this.syncPayshResources();
+    } catch (err) {
+      results.errors.push(`pay.sh sync: ${err.message}`);
+    }
+
+    console.log(`[Discovery] Full discovery complete. Servers: ${results.servers}, Resources: ${results.resources}, pay.sh: ${results.paysh}`);
     return results;
+  }
+
+  /**
+   * Fetch pay.sh catalog, probe each service_url for a live 402, and store
+   * the result as a resource. Skips MPP-protocol providers.
+   */
+  async syncPayshResources() {
+    const PAYSH_CATALOG_URL = process.env.PAYSH_CATALOG_URL || 'https://pay.sh/api/catalog';
+    console.log('[Discovery] Syncing pay.sh catalog...');
+
+    const res = await axios.get(PAYSH_CATALOG_URL, { timeout: 15000 });
+    const providers = Array.isArray(res.data?.providers) ? res.data.providers : [];
+    console.log(`[Discovery] pay.sh: ${providers.length} providers`);
+
+    let synced = 0;
+    for (const p of providers) {
+      if (!p.service_url) continue;
+
+      let host = '';
+      try { host = new URL(p.service_url).hostname; } catch { continue; }
+      if (host.includes('gateway-402.com')) continue;
+
+      try {
+        console.log(`[Discovery] pay.sh probing: ${p.service_url}`);
+        const pricing = await this.probeEndpointPricing(p.service_url, 'POST');
+
+        if (pricing && pricing.accepts.length > 0) {
+          await dataService.addOrUpdateResource({
+            endpoint: p.service_url,
+            slug: p.fqn || this._extractSlug(p.service_url),
+            serverUrl: p.service_url,
+            method: 'POST',
+            description: p.description || '',
+            pricing: pricing.accepts,
+            inputSchema: pricing.inputSchema || null,
+            status: 'active',
+            source: 'paysh',
+            metadata: {
+              fqn: p.fqn,
+              title: p.title,
+              category: p.category,
+              docs_url: `https://pay.sh/services/${p.fqn}/index.md`,
+            },
+          });
+          synced++;
+          console.log(`[Discovery] pay.sh stored: ${p.fqn} (${pricing.accepts.length} accepts)`);
+        } else {
+          console.log(`[Discovery] pay.sh no 402: ${p.fqn}`);
+        }
+      } catch (err) {
+        console.log(`[Discovery] pay.sh probe failed for ${p.fqn}: ${err.message}`);
+      }
+
+      await this._sleep(300);
+    }
+
+    console.log(`[Discovery] pay.sh sync complete: ${synced}/${providers.length} stored`);
+    return synced;
   }
 
   // ================================================================
