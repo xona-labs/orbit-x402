@@ -21,6 +21,7 @@ app.use('/api/resources', require('./routes/resources.routes'));
 app.use('/api/discover', require('./routes/discover.routes'));
 app.use('/api/services-list', require('./routes/services-list.routes'));
 app.use('/api/stats', require('./routes/stats.routes'));
+app.use('/api/x402-discovery', require('./routes/x402-discovery.routes'));
 
 // Skill MD
 app.get('/skill.md', (req, res) => {
@@ -60,6 +61,7 @@ app.get('/', (req, res) => {
       facilitators: '/api/facilitators',
       transfers: '/api/transfers',
       stats: '/api/stats',
+      'x402-discovery': '/api/x402-discovery',
       skill: '/skill.md',
       scan: 'POST /api/scan/trigger',
       health: '/api/health',
