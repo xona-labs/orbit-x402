@@ -292,12 +292,17 @@ class DiscoveryService {
 
     // Fallback: try body
     if (result.accepts.length === 0 && resp.data?.accepts) {
-      result.accepts = (resp.data.accepts || []).map(a => ({
-        network: a.network || '',
-        asset: a.asset || '',
-        amount: a.maxAmountRequired || a.amount || '0',
-        payTo: a.payTo || '',
-      }));
+      result.accepts = (resp.data.accepts || []).map(a => {
+        const raw = a.maxAmountRequired || a.amount || '0';
+        return {
+          network: a.network || '',
+          asset: a.asset || '',
+          amount: String(raw),
+          amountUsdc: parseInt(raw, 10) / 1e6,
+          payTo: a.payTo || '',
+          scheme: a.scheme || 'exact',
+        };
+      });
     }
 
     return result;
