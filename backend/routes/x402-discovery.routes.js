@@ -21,6 +21,7 @@ const router = express.Router();
 const dataService = require('../services/data.service');
 const { fetchPayAIResources } = require('../services/payai-catalog.service');
 const { fetchPayshResources } = require('../services/paysh-catalog.service');
+const { fetchAcedataResources } = require('../services/acedata-catalog.service');
 
 function orbitResourceToXpay(r) {
   return {
@@ -53,18 +54,21 @@ router.get('/', async (req, res) => {
 
   const wantSource = (s) => !sourceFilter || sourceFilter.includes(s);
 
-  const [orbitRaw, payaiItems, payshItems] = await Promise.allSettled([
+  const [orbitRaw, payaiItems, payshItems, acedataItems] = await Promise.allSettled([
     wantSource('orbitx402') ? dataService.getResources() : Promise.resolve([]),
     wantSource('payai') ? fetchPayAIResources() : Promise.resolve([]),
     wantSource('paysh') ? fetchPayshResources() : Promise.resolve([]),
+    wantSource('acedata') ? fetchAcedataResources() : Promise.resolve([]),
   ]);
 
   const orbit = orbitRaw.status === 'fulfilled' ? orbitRaw.value : [];
   const payai = payaiItems.status === 'fulfilled' ? payaiItems.value : [];
   const paysh = payshItems.status === 'fulfilled' ? payshItems.value : [];
+  const acedata = acedataItems.status === 'fulfilled' ? acedataItems.value : [];
 
   if (payaiItems.status === 'rejected') console.error('[x402-discovery] PayAI fetch failed:', payaiItems.reason?.message);
   if (payshItems.status === 'rejected') console.error('[x402-discovery] pay.sh fetch failed:', payshItems.reason?.message);
+  if (acedataItems.status === 'rejected') console.error('[x402-discovery] AceData fetch failed:', acedataItems.reason?.message);
 
   // Combine — deduplicate by resource URL, orbitx402 wins over payai/paysh.
   const seen = new Set();
@@ -88,6 +92,13 @@ router.get('/', async (req, res) => {
     if (!r.accepts?.length) continue; // skip until probed by sync job
     seen.add(r.resource);
     all.push(r);
+  }
+  for (const r of acedata) {
+    if (!r.endpoint || seen.has(r.endpoint)) continue;
+    const mapped = orbitResourceToXpay(r);
+    if (!mapped.accepts.length) continue;
+    seen.add(r.endpoint);
+    all.push(mapped);
   }
 
   // Keyword filter.
